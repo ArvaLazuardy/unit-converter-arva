@@ -1,0 +1,5 @@
+#ignore file dengan .o
+*.o
+
+#ignore executable
+unitconverter
