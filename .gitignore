@@ -3,3 +3,6 @@
 
 #ignore executable
 unitconverter
+
+#ignore cmake build  
+build/

@@ -10,5 +10,10 @@ add_executable(unit-converter-arva
     src/Time.cpp
     src/Mass.cpp
     src/CsvHandler.cpp
+    src/JSONHandler.cpp
 )
 
+find_package(nlohmann_json 3.2.0 REQUIRED)
+target_link_libraries(unit-converter-arva PRIVATE nlohmann_json::nlohmann_json)
+
+target_include_directories(unit-converter-arva PRIVATE include)

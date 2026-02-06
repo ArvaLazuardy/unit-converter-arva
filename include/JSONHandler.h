@@ -1,0 +1,24 @@
+#ifndef JSONHANDLER_H
+#define JSONHANDLER_H
+
+#include "FileHandler.h"
+#include <string>
+#include <vector>
+
+class JsonHandler : public FileHandler {
+private:
+    using Table = std::vector<std::vector<std::string>>;
+    Table table;
+
+public:
+    bool load(std::string filename) override;
+
+    // Selector: JSON column number
+    std::vector<std::string> getColumn(std::string selector) override ;
+
+    void appendColumn(std::string newHeader, const std::vector<std::string>& values) override;
+
+    void save(std::string filename) override;
+};
+
+#endif
