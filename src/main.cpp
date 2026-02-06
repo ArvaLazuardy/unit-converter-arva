@@ -1,5 +1,7 @@
 #include "Converter.h"
 #include "Length.h"
+#include "Mass.h"
+#include "Time.h"
 
 #include "FileHandler.h"
 #include "CsvHandler.h"
@@ -37,6 +39,10 @@ int main(){
 
     std::string unitOrigin;
     std::string unitTarget;
+    std::string unitType;
+
+    std::cout << "Enter unit type (length, time, mass): ";
+    std::cin >> unitType;
 
     std::cout << "Enter original unit: ";
     std::cin >> unitOrigin;
@@ -45,7 +51,22 @@ int main(){
     std::cin >> unitTarget;
 
 
-    Converter* converter = new Length();
+    Converter* converter = nullptr;
+    if (unitType == "length") {
+        converter = new Length();
+    }
+    else if (unitType == "time") {
+        converter = new Time();
+    }
+    else if (unitType == "mass") {
+        converter = new Mass();
+    }
+    else {
+        std::cerr << "Unsupported Unit type!\n";
+        delete fileHandler;
+        return -1;
+    }
+
     std::vector<std::string> originalCol = fileHandler->getColumn(selector);
     std::vector<std::string> resultCol;
 
